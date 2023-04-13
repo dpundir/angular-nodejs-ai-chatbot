@@ -1,0 +1,21 @@
+<div class="chat-component">
+    <h1>Next Gen Implementation Chat Bot</h1>
+    <div class="query-container" #queryContainer>
+        <ng-container *ngFor="let message of messages">
+            <div class="message" [ngClass]="{ 'from': message.author === 'bot',
+    'to': message.author === 'user' }">
+                <img *ngIf="message.author === 'bot'" class="images" src="../../../images/bot.png"/>
+                <span>{{ message.content }}</span>
+                <!--img *ngIf="message.author !== 'bot'" class="images" src="../../../images/user.png"/-->
+            </div>
+        </ng-container>
+    </div>
+    <div class="post-container">
+        <div class="message"><label *ngIf="messages.length == 0; else dialogInfo" for="nameField">How can I help you?</label></div>
+        <div class="trigger-query"><input [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text"></div>
+    </div>
+    <button (click)="sendMessage()">Query</button>
+    <ng-template #dialogInfo>
+        <span [className]="'float-right'">How can I help you now?</span>
+    </ng-template>
+</div>

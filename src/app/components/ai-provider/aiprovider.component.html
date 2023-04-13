@@ -1,0 +1,24 @@
+<div class="aiprovider-component">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+           
+        <div class="form-group">
+            <label for="aiProvider">AI Providers:</label>
+            <select #aiProviderSelect formControlName="aiProvider" class="form-control" (change)="changeAIProvider($event)">
+                <option disabled>Select AI Provider</option>
+                <!--option>Choose AI Provider</option-->
+                <option *ngFor="let provider of aiProviderOptions" [selected]="selectedProvider?.value == provider.value">{{provider.name}}</option>
+            </select>
+            <label for="aiProviderModel">AI Providers:</label>
+            <select #aiModelSelect formControlName="aiProviderModel" class="form-control" (change)="changeAIProviderModel($event)">
+                <option disabled>Select AI Provider Model</option>
+                <!--option>Choose AI Provider</option-->
+                <option *ngFor="let providerModel of aiProviderModelOptions" [selected]="selectedModel?.value == providerModel.value">{{providerModel.name}}</option>
+            </select>
+            <!--div *ngIf="f.provider.touched && f.provider.invalid" class="alert alert-danger">
+                <div *ngIf="f.provider.errors.required">Name is required.</div>
+            </div-->
+        </div>
+       
+        <!--button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button-->
+    </form>
+</div>
